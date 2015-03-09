@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace JapaneseCrossword
 {
@@ -6,7 +7,12 @@ namespace JapaneseCrossword
     {
         public SolutionStatus Solve(string inputFilePath, string outputFilePath)
         {
-            throw new NotImplementedException();
+            if (!File.Exists(inputFilePath))
+                return SolutionStatus.BadInputFilePath;
+            if (!File.Exists(outputFilePath))
+                return SolutionStatus.BadOutputFilePath;
+            var inputFile = File.OpenRead(inputFilePath);
+            return SolutionStatus.BadInputFilePath;
         }
     }
 }
