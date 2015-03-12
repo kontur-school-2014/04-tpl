@@ -77,6 +77,9 @@
     <Content Include="TestFiles\SampleInput.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="TestFiles\SuperBig.solved.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestFiles\SuperBig.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
