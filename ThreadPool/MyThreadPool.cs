@@ -14,7 +14,7 @@ namespace Kontur.Shpora.MT
 			if(workerThreadsCount <= 0)
 				throw new ArgumentException("Value should be positive", "workerThreadsCount");
 			workers = new Thread[workerThreadsCount];
-			for(int i = 0; i < workerThreadsCount; i++)
+			for(var i = 0; i < workerThreadsCount; i++)
 			{
 				workers[i] = new Thread(Worker);
 				workers[i].Start();

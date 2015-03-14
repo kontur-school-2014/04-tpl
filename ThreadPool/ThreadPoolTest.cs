@@ -11,10 +11,10 @@ namespace Kontur.Shpora.MT
 		public static void TestCorrectness()
 		{
 			const int TasksCount = 100500;
-			int count = 0;
+			var count = 0;
 
 			var tp = new MyThreadPool(Environment.ProcessorCount);
-			for(int i = 0; i < TasksCount; i++)
+			for(var i = 0; i < TasksCount; i++)
 			{
 				tp.QueueTask(() => Interlocked.Increment(ref count));
 			}
@@ -25,7 +25,7 @@ namespace Kontur.Shpora.MT
 		[Test]
 		public static void TestSingleThread()
 		{
-			int count = 0;
+			var count = 0;
 
 			var tp = new MyThreadPool(1);
 			tp.QueueTask(() =>
@@ -47,7 +47,7 @@ namespace Kontur.Shpora.MT
 		[Test]
 		public static void TestMultiThread()
 		{
-			int count = 0;
+			var count = 0;
 
 			var tp = new MyThreadPool(2);
 			tp.QueueTask(() =>

@@ -33,7 +33,7 @@ namespace Cancellation
                                         Thread.Sleep(500);
                                         throw new NotImplementedException();
                                     }, cts.Token);
-                for (int i = 1; i < tasks.Length; i++)
+                for (var i = 1; i < tasks.Length; i++)
                 {
                     tasks[i] = Task.Run(() =>
                                         {
@@ -58,7 +58,7 @@ namespace Cancellation
                 var token = cts.Token;
                 var task = Task.Run(() =>
                                     {
-                                        for (int i = 0; i < 10; i++)
+                                        for (var i = 0; i < 10; i++)
                                         {
                                             Thread.Sleep(100);
                                             token.ThrowIfCancellationRequested();
@@ -66,7 +66,7 @@ namespace Cancellation
                                     }, token);
                 var continuation = task.ContinueWith(t =>
                                                      {
-                                                         for (int i = 0; i < 10; i++)
+                                                         for (var i = 0; i < 10; i++)
                                                          {
                                                              Thread.Sleep(100);
                                                              token.ThrowIfCancellationRequested();
@@ -94,7 +94,7 @@ namespace Cancellation
         {
             return Task.Run(() =>
                             {
-                                for (int i = 0; i < 10; i++)
+                                for (var i = 0; i < 10; i++)
                                 {
                                     Console.WriteLine(i);
                                     Thread.Sleep(100);
@@ -230,7 +230,7 @@ namespace Cancellation
             using (cancellationToken.Register(() => { Console.WriteLine("{0} was interrupted after {1} ms", workerName, workingTime.ElapsedMilliseconds); }))
             {
                 Console.WriteLine("{0} worker is concentrating...", workerName);
-                for (int i = 0; i < 10; i++)
+                for (var i = 0; i < 10; i++)
                 {
                     Thread.Sleep(100);
                     cancellationToken.ThrowIfCancellationRequested();
