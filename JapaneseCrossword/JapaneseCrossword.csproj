@@ -46,9 +46,13 @@
   <ItemGroup>
     <Compile Include="Crossword.cs" />
     <Compile Include="CrosswordLoader.cs" />
-    <Compile Include="CrosswordSolver.cs" />
-    <Compile Include="CrosswordSolverTests.cs" />
-    <Compile Include="ICrosswordSolver.cs" />
+    <Compile Include="CrosswordSolvers\BackTrackingSolver.cs" />
+    <Compile Include="CrosswordSolvers\BackTrackingSolverTests.cs" />
+    <Compile Include="CrosswordSolvers\CrosswordSolver.cs" />
+    <Compile Include="CrosswordSolvers\CrosswordSolverTests.cs" />
+    <Compile Include="CrosswordSolvers\ICrosswordSolver.cs" />
+    <Compile Include="CrosswordSolvers\MulithreadedCrosswordSolverTests.cs" />
+    <Compile Include="CrosswordSolvers\MultithreadedCrosswordSolver.cs" />
     <Compile Include="Line.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
