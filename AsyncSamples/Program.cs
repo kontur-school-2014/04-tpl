@@ -2,7 +2,9 @@
 using System.Diagnostics;
 using System.IO;
 using System.Net;
+using System.Runtime.Remoting.Messaging;
 using System.Security.Cryptography;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
@@ -63,14 +65,14 @@ namespace AsyncSamples
 
 				var copyToAsyncTask = fStream.WriteAsync(buf, 0, buf.Length);
 				Console.WriteLine("Started disk I/O! in {0} ms (thread {1})", sw.ElapsedMilliseconds, Thread.CurrentThread.ManagedThreadId);
-				copyToAsyncTask.ContinueWith(writeTask =>
+				var t = copyToAsyncTask.ContinueWith(writeTask =>
 				{
 					if(writeTask.IsFaulted)
 						throw writeTask.Exception;
 					Console.WriteLine("Finished disk I/O! in {0} ms total (thread {1})", sw.ElapsedMilliseconds, Thread.CurrentThread.ManagedThreadId);
 				});
 				Console.WriteLine("Free to do anything, but have no work..");
-				return copyToAsyncTask;
+				return t;
 			}
 		}
 
@@ -106,6 +108,7 @@ namespace AsyncSamples
 
 			Console.WriteLine(Thread.CurrentThread.ManagedThreadId);
 			var hash1 = await taskZeros1;
+
 			Console.WriteLine(Thread.CurrentThread.ManagedThreadId);
 			var hash2 = await taskZeros2;
 
